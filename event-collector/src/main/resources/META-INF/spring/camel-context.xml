@@ -7,8 +7,7 @@
     http://camel.apache.org/schema/spring 
     http://camel.apache.org/schema/spring/camel-spring.xsd
     http://www.springframework.org/schema/beans 
-    http://www.springframework.org/schema/beans/spring-beans.xsd"
-    xmlns:amq="http://activemq.apache.org/schema/core">
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean
         class="org.apache.camel.spring.spi.BridgePropertyPlaceholderConfigurer" id="props">
         <property name="ignoreResourceNotFound" value="true"/>
@@ -20,12 +19,13 @@
             </list>
         </property>
     </bean>
-    <amq:broker id="broker-bf9e2382-fa99-45ed-a93f-220323d61675"
+<!--     <amq:broker id="broker-bf9e2382-fa99-45ed-a93f-220323d61675"
         persistent="false" useJmx="true">
         <amq:transportConnectors>
-            <amq:transportConnector uri="tcp://localhost:61616"/>
+            <amq:transportConnector uri="tcp://localhost:61616"
         </amq:transportConnectors>
-    </amq:broker>
+            xmlns:amq="http://activemq.apache.org/schema/core"/>
+    </amq:broker> -->
     <bean class="org.infinispan.manager.DefaultCacheManager"
         destroy-method="stop" id="cacheManager" init-method="start">
         <constructor-arg type="java.lang.String" value="infinispan.xml"/>
