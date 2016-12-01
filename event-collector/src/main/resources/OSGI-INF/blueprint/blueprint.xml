@@ -16,10 +16,10 @@
         destroy-method="stop" id="cacheManager" init-method="start">
         <constructor-arg type="java.lang.String" value="infinispan.xml"/>
     </bean> -->
-    <bean class="org.apache.activemq.camel.component.ActiveMQComponent" id="myqueue">
+    <bean class="org.apache.activemq.camel.component.ActiveMQComponent" id="activemq">
         <property name="configuration" ref="jmsConfig"/>
     </bean>
-    <bean class="org.apache.camel.component.jms.JmsConfiguration" id="activemq">
+    <bean class="org.apache.camel.component.jms.JmsConfiguration" id="jmsConfig">
         <property name="connectionFactory" ref="pooledConnectionFactory"/>
         <property name="concurrentConsumers" value="10"/>
     </bean>
