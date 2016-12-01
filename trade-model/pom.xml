@@ -21,12 +21,17 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<osgi.symbolicName>Trade-Model</osgi.symbolicName>
+		<osgi.export></osgi.export>
+		<osgi.import>*</osgi.import>
+		<osgi.dynamicImport></osgi.dynamicImport>
+		<osgi.private>com.redhat.empowered.specific.*</osgi.private>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.redhat.empowered</groupId>
 			<artifactId>generic-model</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -62,12 +67,20 @@
 				</executions>
 				<configuration>
 					<instructions>
-						<Bundle-SymbolicName>Trade-Model</Bundle-SymbolicName>
+<!-- 						<Bundle-SymbolicName>Trade-Model</Bundle-SymbolicName>
 						<Private-Package>com.redhat.empowered.specific.*</Private-Package>
-						<Import-Package>*</Import-Package>
+						<Import-Package>*</Import-Package> -->
+						<Bundle-SymbolicName>${osgi.symbolicName}</Bundle-SymbolicName>
+						<Export-Package>${osgi.export}</Export-Package>
+						<Private-Package>${osgi.private}</Private-Package>
+						<Import-Package>${osgi.import}</Import-Package>
+						<DynamicImport-Package>${osgi.dynamicImport}</DynamicImport-Package>
+						<Bundle-DocURL>${project.url}</Bundle-DocURL>
 					</instructions>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 </project>
+						
+
