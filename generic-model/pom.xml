@@ -21,7 +21,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<osgi.symbolicName>Generic-Model</osgi.symbolicName>
-		<osgi.export>org.apache.commons.math3.*;version=3.6.1</osgi.export>
+		<osgi.export>org.apache.commons.math3.*;version=3.6.1,com.redhat.empowered.generic.*;version=1.0.0-SNAPSHOT</osgi.export>
 		<osgi.import>*</osgi.import>
 		<osgi.dynamicImport></osgi.dynamicImport>
 		<osgi.private>com.redhat.empowered.generic.*</osgi.private>
