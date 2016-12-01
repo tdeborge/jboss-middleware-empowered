@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:camel="http://camel.apache.org/schema/blueprint"
+    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                  http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <camelContext id="camelContext-e1a801cd-132e-427e-8111-dcde02e0a266"
+        trace="false" xmlns="http://camel.apache.org/schema/blueprint">
+        <cm:property-placeholder id="ngasplitter" persistent-id="com.rhemea.poc.ngasplitter">
+            <cm:default-properties>
+                <cm:property name="BrokerUrl" value="tcp://localhost:61617"/>
+                <cm:property name="DropDestination" value="target/OutputDir"/>
+                <cm:property name="SendDestination" value="TBO.ZZA"/>
+                <cm:property name="Username" value="admin"/>
+                <cm:property name="Password" value="admin"/>
+            </cm:default-properties>
+        </cm:property-placeholder>
+        <bean class="org.infinispan.manager.DefaultCacheManager"
+            destroy-method="stop" id="cacheManager" init-method="start">
+            <constructor-arg type="java.lang.String" value="infinispan.xml"/>
+        </bean>
+        <bean
+            class="org.apache.activemq.camel.component.ActiveMQComponent" id="myqueue">
+            <property name="configuration" ref="jmsConfig"/>
+        </bean>
+        <bean class="org.apache.camel.component.jms.JmsConfiguration" id="activemq">
+            <property name="connectionFactory" ref="pooledConnectionFactory"/>
+            <property name="concurrentConsumers" value="10"/>
+        </bean>
+        <bean class="org.apache.activemq.pool.PooledConnectionFactory" id="pooledConnectionFactory">
+            <property name="maxConnections" value="5"/>
+            <property name="maximumActiveSessionPerConnection" value="500"/>
+            <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        </bean>
+        <bean class="org.apache.activemq.ActiveMQConnectionFactory" id="jmsConnectionFactory">
+            <property name="brokerURL" value="${BrokerUrl}"/>
+            <property name="userName" value="${Username}"/>
+            <property name="password" value="${Password}"/>
+        </bean>
+        <route id="_route1">
+            <from id="_from1" uri="timer:TimTimer"/>
+            <log id="_log1" message="Timer Fired"/>
+        </route>
+    </camelContext>
+</blueprint>
