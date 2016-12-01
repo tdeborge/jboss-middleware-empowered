@@ -17,7 +17,7 @@
      <amq:broker id="broker-bf9e2382-fa99-45ed-a93f-220323d61675"
         persistent="false" useJmx="true">
         <amq:transportConnectors>
-            <amq:transportConnector uri="tcp://localhost:61616"
+            <amq:transportConnector uri="tcp://localhost:61616"></amq:transportConnector>
         </amq:transportConnectors>
     </amq:broker>
 <!--     <bean class="org.infinispan.manager.DefaultCacheManager"
