@@ -20,19 +20,11 @@
 	<packaging>bundle</packaging>
 	<properties>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 		<osgi.symbolicName>Event-Collector</osgi.symbolicName>
 		<osgi.export></osgi.export>
 		<osgi.import>*</osgi.import>
 		<osgi.dynamicImport></osgi.dynamicImport>
 		<osgi.private>com.redhat.empowered.generic.*</osgi.private>
-
-
-		<version.maven-bundle-plugin>2.3.7</version.maven-bundle-plugin>
-		<jboss.fuse.bom.version>6.3.0.redhat-187</jboss.fuse.bom.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<fabric8.version>2.2.0.redhat-079</fabric8.version>
-		<dg.version>2.15.1.Final-redhat-1</dg.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
