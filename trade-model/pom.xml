@@ -23,7 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<osgi.symbolicName>Trade-Model</osgi.symbolicName>
 		<osgi.export></osgi.export>
-		<osgi.import>*</osgi.import>
+		<osgi.import>com.redhat.empowered.generic.*;version=1.0.0-SNAPSHOT</osgi.import>
 		<osgi.dynamicImport></osgi.dynamicImport>
 		<osgi.private>com.redhat.empowered.specific.*</osgi.private>
 	</properties>
